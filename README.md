@@ -2,7 +2,7 @@
 
 AllTimeAi is an interactive AI-powered assistant built using **Chainlit** and **Gemini API**, designed to respond to user queries in a smart and structured way. It maintains conversation history, handles session-based chat, and sends responses through a visually friendly interface.
 
-![Banner](https://user-images.githubusercontent.com/YOUR-IMAGE-LINK.png) <!-- Replace this with your actual image URL -->
+![Banner](https://private-user-images.githubusercontent.com/156539429/440691166-692c96b6-e6d6-4c5a-a70e-805a12e8d64d.PNG) <!-- Replace this with your actual image URL -->
 
 ---
 
