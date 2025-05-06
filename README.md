@@ -1,1 +1,1 @@
-![image](C:\Users\DELL\Desktop\aihealth\image\capturim.png)
+![Banner](image/capturim.png)
