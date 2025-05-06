@@ -1,4 +1,4 @@
-
+![Preview](https://github.com/Hdutfj/AllTimeAi/issues/1)
     agent = Agent (
         name="An Assistant",
         instructions=(
