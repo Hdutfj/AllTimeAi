@@ -1,0 +1,17 @@
+[project]
+name = "hospital"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "chainlit>=2.3.0",
+    "openai-agents>=0.0.14",
+]
+
+[project.scripts]
+hospital = "hospital:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
