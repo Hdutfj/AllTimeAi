@@ -1,51 +1,54 @@
+# 🤖 AllTimeAi
 
+AllTimeAi is an interactive AI-powered assistant built using **Chainlit** and **Gemini API**, designed to respond to user queries in a smart and structured way. It maintains conversation history, handles session-based chat, and sends responses through a visually friendly interface.
 
+![Banner](https://user-images.githubusercontent.com/YOUR-IMAGE-LINK.png) <!-- Replace this with your actual image URL -->
 
+---
 
+## ✨ Features
 
+- 🔁 **Real-time Chat** interface with conversational history.
+- 🤝 **Session-based memory** using Chainlit's user session.
+- 🤖 **Gemini API** integration for intelligent responses.
+- 💬 Friendly greeting and clear, structured output.
+- ✅ Easily extendable for advanced assistants.
 
+---
 
+## 🛠️ Tech Stack
 
-import chainlit as cl
-import os
-from agents import Agent, AsyncOpenAI, Runner, OpenAIChatCompletionsModel, set_tracing_disabled
-from dotenv import load_dotenv
+- Python
+- [Chainlit](https://docs.chainlit.io/)
+- Google Gemini API
+- `dotenv` for secure API key management
 
-load_dotenv()
-GEMINI_API_KEY=os.getenv("GEMINI_API_KEY")
-set_tracing_disabled(True)
+---
 
-provider= AsyncOpenAI(
-    api_key=GEMINI_API_KEY,
-    base_url="https://generativelanguage.googleapis.com/v1beta/",  # ⚠️ Verify this URL
-)
+## 🚀 Getting Started
 
-@cl.on_chat_start
-async def on_chat_start():
-    cl.user_session.set("history", [])
-    await cl.Message(content="YOUR ASSISTANT BOT, How can i help you?").send()
+### Prerequisites
 
-@cl.on_message
-async def handle_message(message: cl.Message):
-    history = cl.user_session.get("history")
-    history.append({"role" : "user", "content" : message.content})
-    
-    agent = Agent (
-        name="An Assistant",
-        instructions=(
-            "You are an assistant that answers each and every question in detail but if asked about sexual abuse you should say 'lan pe char'."
-        
-        ),
-        model=OpenAIChatCompletionsModel(model="gemini-1.5-flash", openai_client=provider),
+- Python 3.9+
+- Git
+- pip
 
-    )
+### Setup Steps
 
-    result= await Runner.run(agent, input=history)
-    history.append({"role" : "assistant", "content" : result.final_output})
-    cl.user_session.set("history", history)  # 🟢 Save updated history
-    await cl.Message(content=result.final_output).send()
+```bash
+# 1. Clone the repo
+git clone https://github.com/Hdutfj/AllTimeAi.git
+cd AllTimeAi
 
-    full_history="\n".join([f"{m['role'].capitalize()}, {m['content'][:50].strip()}...." for m in history])
-    await cl.Message(content=f"***FULL HISTORY***:/n{full_history}").send()
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Add your API key
+Create a .env file and add:
+GEMINI_API_KEY=your_api_key_here
+
+# 4. Run the bot
+chainlit run probi.py
+
 
 
