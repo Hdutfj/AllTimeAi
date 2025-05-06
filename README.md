@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 import chainlit as cl
 import os
 from agents import Agent, AsyncOpenAI, Runner, OpenAIChatCompletionsModel, set_tracing_disabled
@@ -21,8 +29,7 @@ async def on_chat_start():
 async def handle_message(message: cl.Message):
     history = cl.user_session.get("history")
     history.append({"role" : "user", "content" : message.content})
-
-
+    
     agent = Agent (
         name="An Assistant",
         instructions=(
